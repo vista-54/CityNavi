@@ -22,4 +22,7 @@
     <gap:plugin name="com.evothings.ble" version="1.0.0" />
     <gap:plugin name="com.unarin.cordova.beacon" source="plugins.cordova.io" version="3.3.0" />
     <gap:plugin name="org.apache.cordova.device" />
+    <feature name="LocalNotification">
+        <param name="android-package" value="de.appplant.cordova.plugin.localnotification.LocalNotification" />
+    </feature>
 </widget>
