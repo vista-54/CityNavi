@@ -79,6 +79,21 @@ module.exports = [
             "cordova.plugins.notification.local.core",
             "plugin.notification.local.core"
         ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/network.js",
+        "id": "cordova-plugin-network-information.network",
+        "clobbers": [
+            "navigator.connection",
+            "navigator.network.connection"
+        ]
+    },
+    {
+        "file": "plugins/cordova-plugin-network-information/www/Connection.js",
+        "id": "cordova-plugin-network-information.Connection",
+        "clobbers": [
+            "Connection"
+        ]
     }
 ];
 module.exports.metadata = 
@@ -88,6 +103,7 @@ module.exports.metadata =
     "com.unarin.cordova.beacon": "3.3.0",
     "cordova-plugin-device": "1.0.2-dev",
     "de.appplant.cordova.plugin.local-notification": "0.8.2dev",
+    "cordova-plugin-network-information": "1.0.2-dev",
     "android.support.v4": "21.0.1"
 }
 // BOTTOM OF METADATA

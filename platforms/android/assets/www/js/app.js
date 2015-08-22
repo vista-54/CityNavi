@@ -82,13 +82,20 @@ function startScan() {
 
 }
 
-
+var sound = device.platform == 'Android' ? 'file://beep.mp3' : 'file://beep.caf';
 function displayBeaconList() {
     // Clear beacon list.
     $('#found-beacons').empty();
     $('#info').empty();
     var timeNow = Date.now();
     $.each(beacons, function (key, beacon) {
+        if (beacons.length > 0) {
+            cordova.plugins.notification.local.schedule({
+                id: 2,
+                sound: sound,
+                text: "Welcome Percy! Thanks for stopping by Jim's office. Check out the offers we have for you!"
+            });
+        }
         if (beacon.timeStamp + 60000 > timeNow) {
             var rssiWidth = 1; // Used when RSSI is zero or greater.
             if (beacon.rssi < -100) {
@@ -113,18 +120,7 @@ function displayBeaconList() {
             //searchBeacon(beacon.uuid,beacon.minor,beacon.major);
             $('#warning').remove();
             $('#found-beacons').append(element);
-            cordova.plugins.notification.local.schedule({
-                id: 1,
-                title: "Hello",
-                text: "ibeacon found",
-                sound: "file://sounds/reminder.mp3",
-                icon: "http://icons.com/?cal_id=1",
-                data: {uuid: beacon.uuid}
-            });
 
-            cordova.plugins.notification.local.on("click", function (notification) {
-                joinMeeting(notification.data.meetingId);
-            });
         }
 
     });
